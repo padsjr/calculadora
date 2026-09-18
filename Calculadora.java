@@ -10,9 +10,9 @@ public class Calculadora {
 
     while (online) {
 
-      number1 = entraNum();
-      operador = entraOper();
-      number2 = entraNum();
+      number1 = entraNum(scanner);
+      operador = entraOper(scanner);
+      number2 = entraNum(scanner);
 
       switch (operador) {
         case "+":
@@ -48,9 +48,9 @@ public class Calculadora {
       }
       }
     }
-  public static int entraNum(){
+  public static int entraNum(Scanner scanner){
     int num1;
-    Scanner scanner = new Scanner(System.in);
+    scanner = new Scanner(System.in);
     boolean entradaNum1 = true;
     while(entradaNum1) {
       try{
@@ -66,8 +66,8 @@ public class Calculadora {
     return 0;
   }
 
-  public static String entraOper(){
-  Scanner scanner = new Scanner(System.in);
+  public static String entraOper(Scanner scanner){
+  scanner = new Scanner(System.in);
   String operador;
     boolean entradaOperador = true;
     while(entradaOperador) {
