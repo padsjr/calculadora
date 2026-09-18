@@ -49,21 +49,17 @@ public class Calculadora {
       }
     }
   public static int entraNum(Scanner scanner){
-    int num1;
     scanner = new Scanner(System.in);
-    boolean entradaNum1 = true;
-    while(entradaNum1) {
+
+    while(true) {
       try{
         System.out.println("Digite o valor para operação: ");
-        num1 = scanner.nextInt();
-        entradaNum1 = false;
-        return num1;
+        return scanner.nextInt();
       }catch(InputMismatchException e){
         System.out.println("Você digitou um valor inválido");
         scanner.nextLine();
       }
     }
-    return 0;
   }
 
   public static String entraOper(Scanner scanner){
@@ -77,7 +73,7 @@ public class Calculadora {
       System.out.println("Subtracao: -");
       System.out.println("Multiplicacao: *");
       System.out.println("Divisao: /");
-      operador = scanner.nextLine();
+      operador = scanner.next();
       switch(operador) {
         //Como case nao tem brake, ele passa por todos até encontrar um break, ou ele segue até a saida defaul, por isso tem q lembrar de colocar break
         case "+":
@@ -102,12 +98,12 @@ public class Calculadora {
     return num1 * num2;
   }
   public static int div(int num1, int num2) {
-    try{
-      return num1 / num2;
-    }catch (ArithmeticException e){
-      System.out.println(e.getMessage());
-    };
-          return num1;
+    if (num2 == 0) {
+      System.out.println("Não é possível dividir por zero.");
+      return 0;
+    }
+
+    return num1 / num2;
   }
 }
 
