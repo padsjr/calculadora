@@ -1,4 +1,4 @@
-Ideia de projeto para firnmar a lógica: variaveis, condicionais, laços e funções
+Projeto para firnmar a lógica: variaveis, condicionais, laços e funções
 
 Inicialmente fiz um codigo simples para ler dois numeros e realizar uma operação entre eles exibindo o resultado
 
