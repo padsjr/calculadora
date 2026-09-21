@@ -28,29 +28,37 @@ public class Calculadora {
           System.out.println("O resultado da sua operação é: " + resultado);
           encadear = false;
         }
-        System.out.println("Gostaria de executar outra operação ou continuar essa?");
-        System.out.println("Sim - Digite 1");
-        System.out.println("Não - Digite 2");
-        System.out.println("Continuar esta operação - Digite 3");
-        int novaOperacao = scanner.nextInt();
+        while(true) {
+          System.out.println("Gostaria de executar outra operação ou continuar essa?");
+          System.out.println("Sim - Digite 1");
+          System.out.println("Não - Digite 2");
+          System.out.println("Continuar esta operação - Digite 3");
 
-        if (novaOperacao == 1) {
-          online = true;
-          restart = false;
-        }else if (novaOperacao == 2) {
-          online = false;
-          restart = false;
-        }else if (novaOperacao == 3) {
-          encadear = true;
-        }else{
-          System.out.println("Valor inválido, digite novamente!");
+          int novaOperacao;
+
+          try {
+            novaOperacao = scanner.nextInt();
+          } catch (InputMismatchException e) {
+            System.out.println("Você digitou um valor inválido");
+            scanner.nextLine();
+            continue;
+          }
+          if (novaOperacao == 1) {
+            online = true;
+            restart = false;
+          } else if (novaOperacao == 2) {
+            online = false;
+            restart = false;
+          } else if (novaOperacao == 3) {
+            encadear = true;
+          } else {
+            System.out.println("Valor inválido, digite novamente!");
+          }
         }
-      }
+        }
       }
     }
   public static int entraNum(Scanner scanner){
-    scanner = new Scanner(System.in);
-
     while(true) {
       try{
         System.out.println("Digite o valor para operação: ");
@@ -63,7 +71,6 @@ public class Calculadora {
   }
 
   public static String entraOper(Scanner scanner){
-  scanner = new Scanner(System.in);
   String operador;
     boolean entradaOperador = true;
     while(entradaOperador) {
