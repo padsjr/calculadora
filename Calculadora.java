@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Calculadora {
   public static void main(String[] args) {
-    int number1, number2;
+    int number1, number2, resultado;
     String operador;
     Scanner scanner = new Scanner(System.in);
     boolean online = true;
@@ -13,35 +13,35 @@ public class Calculadora {
       number1 = entraNum(scanner);
       operador = entraOper(scanner);
       number2 = entraNum(scanner);
+      resultado = operacao(number1,number2,operador);
+      System.out.println("O resultado da sua operação é: " + resultado);
 
-      switch (operador) {
-        case "+":
-          System.out.println(sum(number1, number2));
-          break;
-        case "-":
-          System.out.println(sub(number1, number2));
-          break;
-        case "*":
-          System.out.println(mult(number1, number2));
-          break;
-        case "/":
-          System.out.println(div(number1, number2));
-          break;
-        default:
-          System.out.println("Operador inválido!");
-      }
       boolean restart = true;
+      boolean encadear = false;
+
       while(restart) {
-        System.out.println("Gostaria de executar outra operação?");
+
+        if(encadear) {
+          operador = entraOper(scanner);
+          number1 = entraNum(scanner);
+          resultado= operacao(resultado,number1,operador);
+          System.out.println("O resultado da sua operação é: " + resultado);
+          encadear = false;
+        }
+        System.out.println("Gostaria de executar outra operação ou continuar essa?");
         System.out.println("Sim - Digite 1");
         System.out.println("Não - Digite 2");
+        System.out.println("Continuar esta operação - Digite 3");
         int novaOperacao = scanner.nextInt();
+
         if (novaOperacao == 1) {
           online = true;
           restart = false;
         }else if (novaOperacao == 2) {
           online = false;
           restart = false;
+        }else if (novaOperacao == 3) {
+          encadear = true;
         }else{
           System.out.println("Valor inválido, digite novamente!");
         }
@@ -85,6 +85,22 @@ public class Calculadora {
       }
     }
     return "Falha";
+  }
+
+  public static int operacao(int number1, int number2,String operador){
+    switch (operador) {
+      case "+":
+        return sum(number1, number2);
+      case "-":
+        return sub(number1, number2);
+      case "*":
+        return mult(number1, number2);
+      case "/":
+        return div(number1, number2);
+      default:
+        System.out.println("Operador inválido!");
+    }
+    return 0;
   }
 
 
